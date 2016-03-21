@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Locate Yourself</title>
+	</head>
+
+	<body>
+	<div>
+		<h1>Latitude = <span id = 'lat'></span></h1>
+		<h1>Longitude = <span id = 'lng'></span></h1>
+		<span id = 'error'></span>
+	</div>
+
+	<script>
+		function success(position) {
+		// getting lat and long
+			document.getElementById('lat').innerHTML = position.coords.latitude; 
+			document.getElementById('lng').innerHTML = position.coords.longitude;
+		}
+
+		// checking compatibility
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(success);
+		}else{
+			document.getElementById('error').innerHTML = 'Upgrade your browser.';
+		}
+	</script>
+	</body>
+</html>
